@@ -7,8 +7,7 @@ package sqlc
 import (
 	"database/sql/driver"
 	"fmt"
-
-	"github.com/jackc/pgx/v5/pgtype"
+	"time"
 )
 
 type Currency string
@@ -58,7 +57,7 @@ type Account struct {
 	Owner     string
 	Balance   int64
 	Currency  string
-	CreatedAt pgtype.Timestamptz
+	CreatedAt time.Time
 }
 
 type Entry struct {
@@ -66,7 +65,7 @@ type Entry struct {
 	AccountID int64
 	// can be negative or positive
 	Amount    int64
-	CreatedAt pgtype.Timestamptz
+	CreatedAt time.Time
 }
 
 type Transfer struct {
@@ -75,5 +74,5 @@ type Transfer struct {
 	ToAccountID   int64
 	// must be positive
 	Amount    int64
-	CreatedAt pgtype.Timestamptz
+	CreatedAt time.Time
 }
